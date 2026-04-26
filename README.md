@@ -28,8 +28,9 @@ Saya tertarik dengan **Artificial Intelligence (AI)** dan bercita-cita menjadi s
 
 ```
 data-science-2026/
-├── README.md                                          # File ini
-└── Pertemuan1_JuniorDanyWibisono_250401020098.ipynb   # Notebook Pertemuan 1
+├── README.md                                           # File ini
+├── Pertemuan1_JuniorDanyWibisono_250401020098.ipynb    # Notebook Pertemuan 1
+└── Pertemuan2_JuniorDanyWibisono_250401020098.ipynb    # Notebook Pertemuan 2
 ```
 
 ---
@@ -41,7 +42,13 @@ data-science-2026/
   - Kerangka CRISP-DM (6 fase siklus proyek data)
   - Ekosistem tools: Python, Google Colab, Jupyter Notebook, GitHub
   - Hands-on: menjalankan kode Python pertama di Colab
-- [ ] Pertemuan 2 — _coming soon_
+
+- [x] **Pertemuan 2** — Struktur Data Python, NumPy & Pandas
+  - Struktur data Python: list, tuple, dictionary, set
+  - NumPy ndarray: pembuatan, atribut, operasi vektorisasi, fungsi statistik
+  - Pandas Series & DataFrame: load CSV, filtering, groupby & agregasi
+  - Hands-on: eksplorasi dataset Titanic (Q1–Q6)
+
 - [ ] Pertemuan 3 — _coming soon_
 
 ---
@@ -49,6 +56,8 @@ data-science-2026/
 ## 🛠️ Tools yang Digunakan
 
 - **Python 3** — bahasa pemrograman utama
+- **NumPy** — komputasi numerik & array multidimensi
+- **Pandas** — manipulasi dan analisis data tabular
 - **Google Colab** — environment notebook berbasis cloud
 - **Jupyter Notebook** — format `.ipynb` untuk dokumentasi interaktif
 - **GitHub** — version control & portofolio
@@ -59,7 +68,7 @@ data-science-2026/
 
 1. Klik file `.ipynb` di atas
 2. Klik tombol **"Open in Colab"** (atau buka manual via [Google Colab](https://colab.research.google.com))
-3. Jalankan setiap sel dengan menekan `Shift + Enter` atau `Ctrl + Enter`
+3. Jalankan setiap sel dengan menekan `Shift + Enter` atau klik **Runtime → Run all**
 
 ---
 
