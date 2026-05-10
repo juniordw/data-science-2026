@@ -30,7 +30,9 @@ Saya tertarik dengan **Artificial Intelligence (AI)** dan bercita-cita menjadi s
 data-science-2026/
 ├── README.md                                           # File ini
 ├── Pertemuan1_JuniorDanyWibisono_250401020098.ipynb    # Notebook Pertemuan 1
-└── Pertemuan2_JuniorDanyWibisono_250401020098.ipynb    # Notebook Pertemuan 2
+├── Pertemuan2_JuniorDanyWibisono_250401020098.ipynb    # Notebook Pertemuan 2
+├── Pertemuan3_JuniorDanyWibisono_250401020098.ipynb    # Notebook Pertemuan 3
+└── Pertemuan4_JuniorDanyWibisono_250401020098.ipynb    # Notebook Pertemuan 4
 ```
 
 ---
@@ -49,7 +51,20 @@ data-science-2026/
   - Pandas Series & DataFrame: load CSV, filtering, groupby & agregasi
   - Hands-on: eksplorasi dataset Titanic (Q1–Q6)
 
-- [ ] Pertemuan 3 — _coming soon_
+- [x] **Pertemuan 3** — Data Cleaning: Missing Values, Outlier & Ekstraksi Data
+  - Taksonomi masalah kualitas data (missing, duplikat, inkonsistensi, outlier)
+  - Deteksi & penanganan missing values: drop, imputasi median/modus, forward fill
+  - Hapus duplikat & normalisasi string (`str.strip()`, `str.title()`, `str.lower()`)
+  - Deteksi & penanganan outlier: IQR Fence + capping (`clip`)
+  - Ekstraksi data dari REST API publik menggunakan `requests` (JSONPlaceholder)
+  - Hands-on: pipeline cleaning dataset `housing_dirty.csv` → `housing_clean.csv`
+
+- [x] **Pertemuan 4** — Statistika Dasar & Analisis Data
+  - Statistika deskriptif: mean, median, modus, varians, std, kuartil, IQR, persentil
+  - Distribusi data: normal, right-skewed, left-skewed, bimodal; skewness & kurtosis
+  - Analisis univariat: histogram, KDE plot, boxplot, violin plot
+  - Analisis bivariat: scatter plot, korelasi Pearson & Spearman, heatmap korelasi
+  - Hands-on: eksplorasi statistik dataset Iris (6 langkah) dengan Matplotlib & Seaborn
 
 ---
 
@@ -58,6 +73,10 @@ data-science-2026/
 - **Python 3** — bahasa pemrograman utama
 - **NumPy** — komputasi numerik & array multidimensi
 - **Pandas** — manipulasi dan analisis data tabular
+- **Matplotlib** — visualisasi data dasar
+- **Seaborn** — visualisasi data statistik
+- **SciPy** — uji statistik (Pearson, Spearman, skewness test)
+- **Requests** — akses REST API
 - **Google Colab** — environment notebook berbasis cloud
 - **Jupyter Notebook** — format `.ipynb` untuk dokumentasi interaktif
 - **GitHub** — version control & portofolio
