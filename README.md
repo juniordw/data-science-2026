@@ -32,7 +32,8 @@ data-science-2026/
 ├── Pertemuan1_JuniorDanyWibisono_250401020098.ipynb    # Notebook Pertemuan 1
 ├── Pertemuan2_JuniorDanyWibisono_250401020098.ipynb    # Notebook Pertemuan 2
 ├── Pertemuan3_JuniorDanyWibisono_250401020098.ipynb    # Notebook Pertemuan 3
-└── Pertemuan4_JuniorDanyWibisono_250401020098.ipynb    # Notebook Pertemuan 4
+├── Pertemuan4_JuniorDanyWibisono_250401020098.ipynb    # Notebook Pertemuan 4
+└── Pertemuan5_JuniorDanyWibisono_250401020098.ipynb    # Notebook Pertemuan 5
 ```
 
 ---
@@ -66,6 +67,14 @@ data-science-2026/
   - Analisis bivariat: scatter plot, korelasi Pearson & Spearman, heatmap korelasi
   - Hands-on: eksplorasi statistik dataset Iris (6 langkah) dengan Matplotlib & Seaborn
 
+- [x] **Pertemuan 5** — Visualisasi Data
+  - 5 prinsip visualisasi efektif: Clarity, Accuracy, Efficiency, Aesthetics, Context
+  - Memilih jenis grafik yang tepat: bar, line, histogram, boxplot, scatter, pair plot
+  - Matplotlib: Figure & Axes, bar chart, line chart, scatter plot, kustomisasi
+  - Seaborn: histplot + KDE, boxplot, violin plot, scatter plot, pair plot
+  - Membaca grafik dengan kerangka **What? So what? Now what?**
+  - Hands-on: dashboard visualisasi statis 4 panel dari dataset Tips (Matplotlib + Seaborn)
+
 ---
 
 ## 🛠️ Tools yang Digunakan
@@ -73,8 +82,8 @@ data-science-2026/
 - **Python 3** — bahasa pemrograman utama
 - **NumPy** — komputasi numerik & array multidimensi
 - **Pandas** — manipulasi dan analisis data tabular
-- **Matplotlib** — visualisasi data dasar
-- **Seaborn** — visualisasi data statistik
+- **Matplotlib** — visualisasi data dasar & dashboard statis
+- **Seaborn** — visualisasi data statistik (histplot, boxplot, violin, pairplot)
 - **SciPy** — uji statistik (Pearson, Spearman, skewness test)
 - **Requests** — akses REST API
 - **Google Colab** — environment notebook berbasis cloud
