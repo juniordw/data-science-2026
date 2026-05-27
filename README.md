@@ -33,7 +33,8 @@ data-science-2026/
 ├── Pertemuan2_JuniorDanyWibisono_250401020098.ipynb    # Notebook Pertemuan 2
 ├── Pertemuan3_JuniorDanyWibisono_250401020098.ipynb    # Notebook Pertemuan 3
 ├── Pertemuan4_JuniorDanyWibisono_250401020098.ipynb    # Notebook Pertemuan 4
-└── Pertemuan5_JuniorDanyWibisono_250401020098.ipynb    # Notebook Pertemuan 5
+├── Pertemuan5_JuniorDanyWibisono_250401020098.ipynb    # Notebook Pertemuan 5
+└── Pertemuan6_JuniorDanyWibisono_250401020098.ipynb    # Notebook Pertemuan 6
 ```
 
 ---
@@ -75,6 +76,14 @@ data-science-2026/
   - Membaca grafik dengan kerangka **What? So what? Now what?**
   - Hands-on: dashboard visualisasi statis 4 panel dari dataset Tips (Matplotlib + Seaborn)
 
+- [x] **Pertemuan 6** — Persiapan Data (Encoding, Scaling, Train-Test Split)
+  - Filosofi *Garbage In, Garbage Out* & pipeline persiapan data yang benar
+  - Encoding data kategorikal: **Label Encoding**, **One-Hot Encoding** (`drop_first=True` untuk hindari dummy variable trap), **Ordinal Encoding** (dengan urutan eksplisit)
+  - Feature scaling: **MinMaxScaler** (rentang [0, 1]), **StandardScaler** (mean=0, std=1), **RobustScaler** (berbasis median & IQR) — beserta visualisasi perbandingannya
+  - **`train_test_split()`** dari scikit-learn dengan parameter `stratify` untuk menjaga proporsi kelas pada dataset tidak seimbang
+  - Pencegahan **data leakage**: split dulu → `fit_transform` di train → `transform` di test
+  - Hands-on: pipeline preprocessing end-to-end dataset **Titanic** (load → impute median/modus → One-Hot Encoding → stratified split 80:20 → StandardScaler pada kolom numerik saja)
+
 ---
 
 ## 🛠️ Tools yang Digunakan
@@ -85,6 +94,7 @@ data-science-2026/
 - **Matplotlib** — visualisasi data dasar & dashboard statis
 - **Seaborn** — visualisasi data statistik (histplot, boxplot, violin, pairplot)
 - **SciPy** — uji statistik (Pearson, Spearman, skewness test)
+- **scikit-learn** — preprocessing (encoder, scaler) & utilitas ML (`train_test_split`)
 - **Requests** — akses REST API
 - **Google Colab** — environment notebook berbasis cloud
 - **Jupyter Notebook** — format `.ipynb` untuk dokumentasi interaktif
