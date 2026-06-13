@@ -34,7 +34,8 @@ data-science-2026/
 ├── Pertemuan3_JuniorDanyWibisono_250401020098.ipynb    # Notebook Pertemuan 3
 ├── Pertemuan4_JuniorDanyWibisono_250401020098.ipynb    # Notebook Pertemuan 4
 ├── Pertemuan5_JuniorDanyWibisono_250401020098.ipynb    # Notebook Pertemuan 5
-└── Pertemuan6_JuniorDanyWibisono_250401020098.ipynb    # Notebook Pertemuan 6
+├── Pertemuan6_JuniorDanyWibisono_250401020098.ipynb    # Notebook Pertemuan 6
+└── Pertemuan7_JuniorDanyWibisono_250401020098.ipynb    # Notebook Pertemuan 7
 ```
 
 ---
@@ -84,6 +85,15 @@ data-science-2026/
   - Pencegahan **data leakage**: split dulu → `fit_transform` di train → `transform` di test
   - Hands-on: pipeline preprocessing end-to-end dataset **Titanic** (load → impute median/modus → One-Hot Encoding → stratified split 80:20 → StandardScaler pada kolom numerik saja)
 
+- [x] **Pertemuan 7** — Pengantar Machine Learning: Regresi Linear
+  - Lanskap ML: **Supervised vs Unsupervised**, **Classification vs Regression**, beserta contoh algoritmanya
+  - Konsep **Regresi Linear**: persamaan `ŷ = β₀ + β₁x`, interpretasi intercept & slope, *simple vs multiple linear regression*
+  - **Cost function (MSE)** & **Gradient Descent** (learning rate α) — catatan: scikit-learn `LinearRegression` memakai solusi analitik **Ordinary Least Squares (OLS)**
+  - Implementasi `LinearRegression` scikit-learn: pola **Instantiate → Fit → Predict → Evaluate**, atribut `.coef_` & `.intercept_`
+  - Metrik evaluasi regresi: **MAE**, **MSE/RMSE**, **R² (koefisien determinasi)** — kapan memakai masing-masing & membaca selisih RMSE−MAE untuk deteksi outlier
+  - Visualisasi evaluasi: **Actual vs Predicted** & **Residual Plot** dengan kerangka *What? So what? Now what?*
+  - Hands-on: pipeline prediksi gaji end-to-end pada dataset sintetis (generate & EDA → One-Hot Encoding → split 80:20 → StandardScaler → fit `LinearRegression` → evaluasi MAE/RMSE/R² → visualisasi). Hasil: **R² ≈ 0.97**
+
 ---
 
 ## 🛠️ Tools yang Digunakan
@@ -94,7 +104,7 @@ data-science-2026/
 - **Matplotlib** — visualisasi data dasar & dashboard statis
 - **Seaborn** — visualisasi data statistik (histplot, boxplot, violin, pairplot)
 - **SciPy** — uji statistik (Pearson, Spearman, skewness test)
-- **scikit-learn** — preprocessing (encoder, scaler) & utilitas ML (`train_test_split`)
+- **scikit-learn** — preprocessing (encoder, scaler), `train_test_split`, model **`LinearRegression`**, & metrik evaluasi (`mean_absolute_error`, `root_mean_squared_error`, `r2_score`)
 - **Requests** — akses REST API
 - **Google Colab** — environment notebook berbasis cloud
 - **Jupyter Notebook** — format `.ipynb` untuk dokumentasi interaktif
