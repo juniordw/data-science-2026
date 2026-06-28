@@ -47,7 +47,8 @@ data-science-2026/
 ├── Pertemuan4_JuniorDanyWibisono_250401020098.ipynb    # Notebook Pertemuan 4
 ├── Pertemuan5_JuniorDanyWibisono_250401020098.ipynb    # Notebook Pertemuan 5
 ├── Pertemuan6_JuniorDanyWibisono_250401020098.ipynb    # Notebook Pertemuan 6
-└── Pertemuan7_JuniorDanyWibisono_250401020098.ipynb    # Notebook Pertemuan 7
+├── Pertemuan7_JuniorDanyWibisono_250401020098.ipynb    # Notebook Pertemuan 7
+└── Pertemuan9_JuniorDanyWibisono_250401020098.ipynb    # Notebook Pertemuan 9
 ```
 
 ---
@@ -63,6 +64,7 @@ data-science-2026/
 | **Pertemuan 5** | Visualisasi Data | [📓 Buka Notebook](./Pertemuan5_JuniorDanyWibisono_250401020098.ipynb) |
 | **Pertemuan 6** | Persiapan Data (Encoding, Scaling, Train-Test Split) | [📓 Buka Notebook](./Pertemuan6_JuniorDanyWibisono_250401020098.ipynb) |
 | **Pertemuan 7** | Pengantar Machine Learning: Regresi Linear | [📓 Buka Notebook](./Pertemuan7_JuniorDanyWibisono_250401020098.ipynb) |
+| **Pertemuan 9** | Algoritma Klasifikasi (Bagian 1): Logistic Regression & Decision Tree | [📓 Buka Notebook](./Pertemuan9_JuniorDanyWibisono_250401020098.ipynb) |
 
 ### Detail Setiap Pertemuan
 
@@ -117,6 +119,13 @@ data-science-2026/
   - Metrik evaluasi: **MAE**, **MSE/RMSE**, **R²**
   - Hands-on: pipeline prediksi gaji end-to-end. Hasil: **R² ≈ 0.97**
 
+- [x] **Pertemuan 9** — Algoritma Klasifikasi (Bagian 1): Logistic Regression & Decision Tree
+  - Konsep **klasifikasi** sebagai Supervised Learning untuk memprediksi kategori diskret: **Binary vs Multiclass Classification**
+  - **Logistic Regression**: fungsi **Sigmoid** σ(z), decision boundary, & pengaruh **threshold** terhadap trade-off Precision–Recall (`predict_proba`)
+  - **Decision Tree**: aturan if-else bertingkat, kemurnian split via **Gini Impurity** & Entropy, trade-off **underfitting vs overfitting** (`max_depth`), serta interpretasi `feature_importances_`
+  - Metrik evaluasi klasifikasi: **Confusion Matrix** (TP/TN/FP/FN), **Accuracy**, **Precision**, **Recall**, & **F1-Score** — beserta kapan memprioritaskan masing-masing
+  - Hands-on: melatih & membandingkan 2 model pada dataset medis **Breast Cancer Wisconsin** (569 sampel, 30 fitur). Hasil: **Logistic Regression Akurasi ≈ 0.982**, mendeteksi **41 dari 42** kasus kanker (Recall malignant 0.976) — unggul atas Decision Tree (Akurasi 0.939)
+
 ---
 
 ## 🛠️ Tools yang Digunakan
@@ -127,7 +136,7 @@ data-science-2026/
 - **Matplotlib** — visualisasi data dasar & dashboard statis
 - **Seaborn** — visualisasi data statistik (histplot, boxplot, violin, pairplot)
 - **SciPy** — uji statistik (Pearson, Spearman, skewness test)
-- **scikit-learn** — preprocessing (encoder, scaler), `train_test_split`, model `LinearRegression`, & metrik evaluasi
+- **scikit-learn** — preprocessing (encoder, scaler), `train_test_split`, model `LinearRegression`, `LogisticRegression`, `DecisionTreeClassifier`, & metrik evaluasi (regresi & klasifikasi)
 - **Requests** — akses REST API
 - **Google Colab** — environment notebook berbasis cloud
 - **Jupyter Notebook** — format `.ipynb` untuk dokumentasi interaktif
@@ -149,7 +158,9 @@ Tujuh pertemuan ini membentuk fondasi yang solid untuk berkarir sebagai Data Sci
 
 Temuan terpenting dari rangkaian ini adalah bahwa **kualitas data jauh lebih menentukan daripada kecanggihan algoritma** — prinsip *Garbage In, Garbage Out* yang terbukti di setiap tahap. Saya juga memahami bahwa alur kerja yang benar (split → fit di train → transform di test) sangat kritis untuk mencegah *data leakage* yang membuat evaluasi model menjadi tidak valid.
 
-Langkah selanjutnya yang ingin saya pelajari: algoritma klasifikasi (Logistic Regression, Decision Tree), validasi silang (*cross-validation*), dan penanganan *class imbalance* untuk kasus data dunia nyata yang lebih kompleks.
+Sebagian dari rencana belajar tersebut kini telah terwujud di **Pertemuan 9**: saya mulai mempelajari **algoritma klasifikasi** dengan **Logistic Regression** dan **Decision Tree** pada dataset medis **Breast Cancer Wisconsin**. Pelajaran kunci dari hands-on ini adalah bahwa **pemilihan metrik harus mengikuti konteks masalah** — untuk diagnosis kanker, **Recall** (jangan sampai melewatkan kasus ganas) jauh lebih kritis daripada Accuracy semata, sehingga Logistic Regression yang mendeteksi 41 dari 42 kasus kanker menjadi pilihan yang lebih aman dibandingkan Decision Tree.
+
+Langkah selanjutnya yang ingin saya pelajari: algoritma klasifikasi lanjutan (**SVM**, **Naive Bayes**, serta metode *ensemble* seperti Random Forest), validasi silang (*cross-validation*), dan penanganan *class imbalance* untuk kasus data dunia nyata yang lebih kompleks.
 
 ---
 
