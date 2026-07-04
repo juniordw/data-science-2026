@@ -48,7 +48,8 @@ data-science-2026/
 ├── Pertemuan5_JuniorDanyWibisono_250401020098.ipynb    # Notebook Pertemuan 5
 ├── Pertemuan6_JuniorDanyWibisono_250401020098.ipynb    # Notebook Pertemuan 6
 ├── Pertemuan7_JuniorDanyWibisono_250401020098.ipynb    # Notebook Pertemuan 7
-└── Pertemuan9_JuniorDanyWibisono_250401020098.ipynb    # Notebook Pertemuan 9
+├── Pertemuan9_JuniorDanyWibisono_250401020098.ipynb    # Notebook Pertemuan 9
+└── Pertemuan10_JuniorDanyWibisono_250401020098.ipynb   # Notebook Pertemuan 10
 ```
 
 ---
@@ -65,6 +66,7 @@ data-science-2026/
 | **Pertemuan 6** | Persiapan Data (Encoding, Scaling, Train-Test Split) | [📓 Buka Notebook](./Pertemuan6_JuniorDanyWibisono_250401020098.ipynb) |
 | **Pertemuan 7** | Pengantar Machine Learning: Regresi Linear | [📓 Buka Notebook](./Pertemuan7_JuniorDanyWibisono_250401020098.ipynb) |
 | **Pertemuan 9** | Algoritma Klasifikasi (Bagian 1): Logistic Regression & Decision Tree | [📓 Buka Notebook](./Pertemuan9_JuniorDanyWibisono_250401020098.ipynb) |
+| **Pertemuan 10** | Algoritma Klasifikasi (Bagian 2): Random Forest & Imbalanced Dataset | [📓 Buka Notebook](./Pertemuan10_JuniorDanyWibisono_250401020098.ipynb) |
 
 ### Detail Setiap Pertemuan
 
@@ -126,6 +128,13 @@ data-science-2026/
   - Metrik evaluasi klasifikasi: **Confusion Matrix** (TP/TN/FP/FN), **Accuracy**, **Precision**, **Recall**, & **F1-Score** — beserta kapan memprioritaskan masing-masing
   - Hands-on: melatih & membandingkan 2 model pada dataset medis **Breast Cancer Wisconsin** (569 sampel, 30 fitur). Hasil: **Logistic Regression Akurasi ≈ 0.982**, mendeteksi **41 dari 42** kasus kanker (Recall malignant 0.976) — unggul atas Decision Tree (Akurasi 0.939)
 
+- [x] **Pertemuan 10** — Algoritma Klasifikasi (Bagian 2): Random Forest & Imbalanced Dataset
+  - **Ensemble learning**: intuisi *wisdom of crowds*, trade-off **bias–variance**, serta perbedaan **Bagging** (paralel, menurunkan variance) vs **Boosting** (sekuensial, menurunkan bias)
+  - **Random Forest**: bootstrap sampling + random feature selection + agregasi (majority voting / rata-rata `predict_proba`), estimasi **Out-of-Bag (OOB)**, hyperparameter kunci (`n_estimators`, `max_depth`, `max_features="sqrt"`, `min_samples_leaf`), & **feature importance**
+  - **Imbalanced dataset**: **accuracy paradox** (akurasi tinggi menyembunyikan Recall 0%), pemilihan metrik yang tepat (**Precision, Recall, F1, ROC-AUC, PR-AUC**) dengan fokus kelas minoritas
+  - **Penanganan imbalance**: level data (**Oversampling, SMOTE, Undersampling**) & level algoritma (**`class_weight="balanced"`** + **threshold tuning** via kurva Precision-Recall) — resampling hanya pada data latih
+  - Hands-on: prediksi **Customer Churn** (dataset Telco, ± 7.043 pelanggan, ~26,5% churn → imbalanced). Membandingkan **3 strategi** (baseline vs `class_weight` vs SMOTE); **threshold tuning** menaikkan Recall churn dari ~0.34 ke ~0.65, dengan `MonthlyCharges`, `TotalCharges`, `tenure`, & `Contract` sebagai pendorong utama. `predict_proba` dipakai untuk **memprioritaskan pelanggan berisiko** bagi tim retensi
+
 ---
 
 ## 🛠️ Tools yang Digunakan
@@ -136,7 +145,8 @@ data-science-2026/
 - **Matplotlib** — visualisasi data dasar & dashboard statis
 - **Seaborn** — visualisasi data statistik (histplot, boxplot, violin, pairplot)
 - **SciPy** — uji statistik (Pearson, Spearman, skewness test)
-- **scikit-learn** — preprocessing (encoder, scaler), `train_test_split`, model `LinearRegression`, `LogisticRegression`, `DecisionTreeClassifier`, & metrik evaluasi (regresi & klasifikasi)
+- **scikit-learn** — preprocessing (encoder, scaler), `train_test_split`, model `LinearRegression`, `LogisticRegression`, `DecisionTreeClassifier`, `RandomForestClassifier`, & metrik evaluasi lengkap (regresi & klasifikasi, termasuk `classification_report`, `roc_auc_score`, `precision_recall_curve`)
+- **imbalanced-learn (imblearn)** — penanganan data tak seimbang: **SMOTE** (Synthetic Minority Over-sampling)
 - **Requests** — akses REST API
 - **Google Colab** — environment notebook berbasis cloud
 - **Jupyter Notebook** — format `.ipynb` untuk dokumentasi interaktif
@@ -152,15 +162,17 @@ data-science-2026/
 
 ---
 
-## 📌 Kesimpulan Umum Perjalanan Belajar Data Science (Pertemuan 1–7)
+## 📌 Kesimpulan Umum Perjalanan Belajar Data Science (Pertemuan 1–10)
 
 Tujuh pertemuan ini membentuk fondasi yang solid untuk berkarir sebagai Data Scientist. Perjalanan dimulai dari memahami **ekosistem Python** (Pertemuan 1–2), berlanjut ke keterampilan inti berupa **pembersihan data** dan **analisis statistik** (Pertemuan 3–4), kemudian **komunikasi data melalui visualisasi** (Pertemuan 5), hingga akhirnya membangun **pipeline Machine Learning pertama** secara end-to-end (Pertemuan 6–7).
 
 Temuan terpenting dari rangkaian ini adalah bahwa **kualitas data jauh lebih menentukan daripada kecanggihan algoritma** — prinsip *Garbage In, Garbage Out* yang terbukti di setiap tahap. Saya juga memahami bahwa alur kerja yang benar (split → fit di train → transform di test) sangat kritis untuk mencegah *data leakage* yang membuat evaluasi model menjadi tidak valid.
 
-Sebagian dari rencana belajar tersebut kini telah terwujud di **Pertemuan 9**: saya mulai mempelajari **algoritma klasifikasi** dengan **Logistic Regression** dan **Decision Tree** pada dataset medis **Breast Cancer Wisconsin**. Pelajaran kunci dari hands-on ini adalah bahwa **pemilihan metrik harus mengikuti konteks masalah** — untuk diagnosis kanker, **Recall** (jangan sampai melewatkan kasus ganas) jauh lebih kritis daripada Accuracy semata, sehingga Logistic Regression yang mendeteksi 41 dari 42 kasus kanker menjadi pilihan yang lebih aman dibandingkan Decision Tree.
+Sebagian dari rencana belajar tersebut kini telah terwujud di **Pertemuan 9 & 10**: saya mulai mempelajari **algoritma klasifikasi** dengan **Logistic Regression** dan **Decision Tree** (Pertemuan 9, dataset medis **Breast Cancer Wisconsin**), lalu meningkat ke metode **ensemble** dengan **Random Forest** (Pertemuan 10, kasus **Customer Churn**). Pelajaran kunci yang berulang di kedua pertemuan adalah bahwa **pemilihan metrik harus mengikuti konteks masalah** — untuk diagnosis kanker maupun deteksi churn, **Recall** (jangan sampai melewatkan kasus penting) jauh lebih kritis daripada Accuracy semata.
 
-Langkah selanjutnya yang ingin saya pelajari: algoritma klasifikasi lanjutan (**SVM**, **Naive Bayes**, serta metode *ensemble* seperti Random Forest), validasi silang (*cross-validation*), dan penanganan *class imbalance* untuk kasus data dunia nyata yang lebih kompleks.
+**Pertemuan 10** secara khusus membuka mata saya pada **accuracy paradox**: pada data tak seimbang (~26,5% churn), sebuah model "malas" bisa terlihat 73,5% akurat padahal gagal total menangkap satu pun churner (Recall 0%). Saya belajar bahwa Random Forest — kombinasi *bagging* pohon dan keacakan fitur — menghasilkan prediksi yang jauh lebih stabil daripada satu pohon tunggal, dan bahwa *class imbalance* dapat ditangani lewat beberapa jalur yang saling melengkapi: **`class_weight`**, **SMOTE** (hanya pada data latih), dan **threshold tuning**. Yang paling berkesan, keluaran **`predict_proba`** mengubah model dari sekadar penebak label menjadi **alat prioritas bisnis** yang membantu tim retensi menargetkan pelanggan paling berisiko.
+
+Langkah selanjutnya yang ingin saya pelajari: **cross-validation & hyperparameter tuning** (GridSearchCV/RandomizedSearchCV) untuk estimasi performa yang lebih stabil, metode *boosting* lanjutan (**Gradient Boosting, XGBoost**), serta algoritma klasifikasi lain seperti **SVM** dan **Naive Bayes**.
 
 ---
 
