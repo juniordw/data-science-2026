@@ -50,7 +50,8 @@ data-science-2026/
 ├── Pertemuan7_JuniorDanyWibisono_250401020098.ipynb    # Notebook Pertemuan 7
 ├── Pertemuan9_JuniorDanyWibisono_250401020098.ipynb    # Notebook Pertemuan 9
 ├── Pertemuan10_JuniorDanyWibisono_250401020098.ipynb   # Notebook Pertemuan 10
-└── Pertemuan11_JuniorDanyWibisono_250401020098.ipynb   # Notebook Pertemuan 11
+├── Pertemuan11_JuniorDanyWibisono_250401020098.ipynb   # Notebook Pertemuan 11
+└── Pertemuan12_JuniorDanyWibisono_250401020098.ipynb   # Notebook Pertemuan 12
 ```
 
 ---
@@ -69,6 +70,7 @@ data-science-2026/
 | **Pertemuan 9** | Algoritma Klasifikasi (Bagian 1): Logistic Regression & Decision Tree | [📓 Buka Notebook](./Pertemuan9_JuniorDanyWibisono_250401020098.ipynb) |
 | **Pertemuan 10** | Algoritma Klasifikasi (Bagian 2): Random Forest & Imbalanced Dataset | [📓 Buka Notebook](./Pertemuan10_JuniorDanyWibisono_250401020098.ipynb) |
 | **Pertemuan 11** | Unsupervised Learning: Clustering (K-Means & Hierarchical) | [📓 Buka Notebook](./Pertemuan11_JuniorDanyWibisono_250401020098.ipynb) |
+| **Pertemuan 12** | Asosiasi Data & Sistem Rekomendasi Dasar (Apriori & Content-Based Filtering) | [📓 Buka Notebook](./Pertemuan12_JuniorDanyWibisono_250401020098.ipynb) |
 
 ### Detail Setiap Pertemuan
 
@@ -145,6 +147,15 @@ data-science-2026/
   - Pentingnya **StandardScaler** untuk algoritma berbasis jarak agar fitur berentang besar tidak mendominasi perhitungan jarak Euclidean
   - Hands-on: **segmentasi pelanggan** (dataset sintetis 300 pelanggan, 3 kelompok tersembunyi). **Elbow & Silhouette sama-sama menunjuk K=3** (Silhouette ≈ 0.70); model mengidentifikasi 3 segmen — **Hemat**, **Menengah**, & **Boros/Premium**. **Hierarchical (Ward)** memberi pengelompokan **hampir identik** dengan K-Means (validasi silang antar algoritma), memperkuat bahwa struktur 3 segmen memang nyata
 
+- [x] **Pertemuan 12** — Asosiasi Data & Sistem Rekomendasi Dasar
+  - **Association Rule Mining (Market Basket Analysis)**: menemukan pola *"jika membeli A, maka cenderung membeli B"* dari data transaksi **tanpa label**; empat istilah kunci — **Itemset**, **Support** (frekuensi kemunculan), **Confidence** (probabilitas B jika A), & **Lift** (kekuatan hubungan dibanding kebetulan)
+  - **Interpretasi Lift**: **Lift > 1** (korelasi positif, layak dipakai), **Lift = 1** (independen), **Lift < 1** (korelasi negatif) — Confidence tinggi **tidak menjamin** aturan bermakna, **Lift** wajib diperiksa untuk membedakan hubungan nyata dari kebetulan statistik
+  - **Algoritma Apriori**: **Apriori Principle / *downward closure*** ("jika itemset tidak frequent, semua supersetnya pasti tidak frequent") untuk *pruning* kandidat dari 2ⁿ kombinasi; algoritma **iteratif** (hitung support → filter min_support → gabung itemset k+1 → ulang), serta dampak parameter **`min_support`**, **`min_confidence`**, **`min_lift`**, & **`max_len`**
+  - **Implementasi `mlxtend`**: `TransactionEncoder` (one-hot transaksi), `apriori()` (frequent itemset), `association_rules()` (bentuk aturan + confidence & lift); pipeline lengkap dari transaksi mentah → aturan terurut by **Lift**
+  - **Sistem Rekomendasi Dasar**: **Collaborative Filtering** (berbasis pola rating pengguna via *user-item matrix* & cosine similarity; unggul untuk *serendipity*, lemah pada **cold start**) vs **Content-Based Filtering** (berbasis kemiripan atribut item; kebal cold start, tetapi rekomendasi kurang beragam) — dan pendekatan **Hybrid** (Netflix, Spotify, Amazon)
+  - **Evaluasi Top-K**: **Precision@K** (proporsi item relevan di antara K rekomendasi teratas) & **Recall@K**; nilai wajar **menurun** seiring K membesar
+  - Hands-on: **Market Basket Analysis + rekomender produk** (50 transaksi sintetis, 10 produk, pola `Roti → Selai` **sengaja ditanam**). Apriori **berhasil menemukan kembali** pola tersembunyi lewat aturan ber-**Lift > 1**; dibangun pula rekomender **Content-Based** (cosine similarity atas kategori), lalu **dibandingkan** dengan rekomendasi association rules — menunjukkan kedua pendekatan menjawab pertanyaan berbeda (*"dibeli bersama?"* vs *"mirip?"*) dan saling melengkapi dalam sistem Hybrid
+
 ---
 
 ## 🛠️ Tools yang Digunakan
@@ -155,8 +166,9 @@ data-science-2026/
 - **Matplotlib** — visualisasi data dasar & dashboard statis
 - **Seaborn** — visualisasi data statistik (histplot, boxplot, violin, pairplot)
 - **SciPy** — uji statistik (Pearson, Spearman, skewness test) & **hierarchical clustering** (`scipy.cluster.hierarchy`: `linkage`, `dendrogram`, `fcluster`)
-- **scikit-learn** — preprocessing (encoder, scaler), `train_test_split`, model `LinearRegression`, `LogisticRegression`, `DecisionTreeClassifier`, `RandomForestClassifier`, **clustering `KMeans`**, & metrik evaluasi lengkap (regresi & klasifikasi, termasuk `classification_report`, `roc_auc_score`, `precision_recall_curve`, & **`silhouette_score`** untuk clustering)
+- **scikit-learn** — preprocessing (encoder, scaler), `train_test_split`, model `LinearRegression`, `LogisticRegression`, `DecisionTreeClassifier`, `RandomForestClassifier`, **clustering `KMeans`**, **`cosine_similarity`** (kemiripan item untuk Content-Based Filtering), & metrik evaluasi lengkap (regresi & klasifikasi, termasuk `classification_report`, `roc_auc_score`, `precision_recall_curve`, & **`silhouette_score`** untuk clustering)
 - **imbalanced-learn (imblearn)** — penanganan data tak seimbang: **SMOTE** (Synthetic Minority Over-sampling)
+- **mlxtend (machine learning extensions)** — **Association Rule Mining**: `TransactionEncoder` (one-hot transaksi), `apriori` (frequent itemset), & `association_rules` (aturan asosiasi + Support, Confidence, Lift)
 - **Requests** — akses REST API
 - **Google Colab** — environment notebook berbasis cloud
 - **Jupyter Notebook** — format `.ipynb` untuk dokumentasi interaktif
@@ -172,7 +184,7 @@ data-science-2026/
 
 ---
 
-## 📌 Kesimpulan Umum Perjalanan Belajar Data Science (Pertemuan 1–11)
+## 📌 Kesimpulan Umum Perjalanan Belajar Data Science (Pertemuan 1–12)
 
 Tujuh pertemuan ini membentuk fondasi yang solid untuk berkarir sebagai Data Scientist. Perjalanan dimulai dari memahami **ekosistem Python** (Pertemuan 1–2), berlanjut ke keterampilan inti berupa **pembersihan data** dan **analisis statistik** (Pertemuan 3–4), kemudian **komunikasi data melalui visualisasi** (Pertemuan 5), hingga akhirnya membangun **pipeline Machine Learning pertama** secara end-to-end (Pertemuan 6–7).
 
@@ -184,7 +196,9 @@ Sebagian dari rencana belajar tersebut kini telah terwujud di **Pertemuan 9 & 10
 
 **Pertemuan 11** menandai transisi besar berikutnya: dari **Supervised** menuju **Unsupervised Learning**. Untuk pertama kalinya saya bekerja dengan data **tanpa label**, di mana algoritma harus menemukan sendiri struktur pengelompokannya. Lewat kasus **segmentasi pelanggan**, saya belajar bahwa **K-Means** mencari centroid yang meminimalkan **WCSS**, dan bahwa menentukan jumlah cluster (**K**) bukan tebakan buta — **Metode Elbow** dan **Silhouette Score** bekerja saling melengkapi (keduanya sepakat di **K=3**). Pelajaran yang paling mengubah cara pandang: di *unsupervised learning* **tidak ada Accuracy** untuk diandalkan, sehingga keberhasilan diukur dari **kekompakan** (WCSS rendah) dan **keterpisahan** (Silhouette tinggi) cluster, serta dari apakah hasilnya **masuk akal secara domain**. Saya juga melihat **Hierarchical Clustering (Ward)** menghasilkan pengelompokan yang **hampir identik** dengan K-Means — bukti bahwa validasi silang antar algoritma memperkuat keyakinan atas struktur yang ditemukan.
 
-Langkah selanjutnya yang ingin saya pelajari: **cross-validation & hyperparameter tuning** (GridSearchCV/RandomizedSearchCV) untuk estimasi performa yang lebih stabil, metode *boosting* lanjutan (**Gradient Boosting, XGBoost**), algoritma klasifikasi lain seperti **SVM** dan **Naive Bayes**, serta pendalaman *unsupervised learning* — **DBSCAN**, **Gaussian Mixture Model (GMM)**, dan reduksi dimensi dengan **PCA** untuk clustering data berdimensi tinggi.
+**Pertemuan 12** memperluas *unsupervised learning* ke dua arah baru yang berorientasi **pola** dan **kemiripan**: **Association Rule Mining** dan **Sistem Rekomendasi**. Lewat **Market Basket Analysis**, saya belajar bahwa algoritma **Apriori** dapat menemukan pola *"jika A maka B"* dari data transaksi tanpa label — dan bahwa metrik yang paling menentukan bukan Support atau Confidence, melainkan **Lift**, yang membedakan hubungan **nyata** dari sekadar **kebetulan statistik**. Pelajaran yang berkesan: sebuah aturan bisa punya Confidence tinggi hanya karena item consequent-nya populer, sehingga **Lift > 1** wajib diperiksa sebelum aturan dianggap layak. Pada sisi rekomendasi, saya memahami perbedaan mendasar antara **Collaborative Filtering** (belajar dari *pola perilaku pengguna*, unggul untuk serendipity tetapi rapuh pada *cold start*) dan **Content-Based Filtering** (belajar dari *atribut item*, kebal cold start tetapi rekomendasinya kurang beragam) — serta bahwa sistem produksi nyata menggabungkan keduanya menjadi **Hybrid**. Di praktikum, Apriori berhasil menemukan kembali pola `Roti → Selai` yang sengaja saya tanam, dan membandingkan rekomendasi association rules dengan Content-Based menegaskan bahwa keduanya menjawab pertanyaan berbeda — *"apa yang dibeli bersama?"* versus *"apa yang mirip?"*.
+
+Langkah selanjutnya yang ingin saya pelajari: **cross-validation & hyperparameter tuning** (GridSearchCV/RandomizedSearchCV) untuk estimasi performa yang lebih stabil, metode *boosting* lanjutan (**Gradient Boosting, XGBoost**), algoritma klasifikasi lain seperti **SVM** dan **Naive Bayes**, pendalaman *unsupervised learning* — **DBSCAN**, **Gaussian Mixture Model (GMM)**, dan reduksi dimensi dengan **PCA** — serta pendalaman **sistem rekomendasi**: **Collaborative Filtering** pada *user-item matrix* nyata, **Matrix Factorization (SVD)**, evaluasi **Precision@K / Recall@K**, dan **FP-Growth** sebagai alternatif Apriori yang lebih cepat.
 
 ---
 
