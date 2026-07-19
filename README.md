@@ -51,7 +51,8 @@ data-science-2026/
 ├── Pertemuan9_JuniorDanyWibisono_250401020098.ipynb    # Notebook Pertemuan 9
 ├── Pertemuan10_JuniorDanyWibisono_250401020098.ipynb   # Notebook Pertemuan 10
 ├── Pertemuan11_JuniorDanyWibisono_250401020098.ipynb   # Notebook Pertemuan 11
-└── Pertemuan12_JuniorDanyWibisono_250401020098.ipynb   # Notebook Pertemuan 12
+├── Pertemuan12_JuniorDanyWibisono_250401020098.ipynb   # Notebook Pertemuan 12
+└── Pertemuan13_JuniorDanyWibisono_250401020098.ipynb   # Notebook Pertemuan 13
 ```
 
 ---
@@ -71,6 +72,7 @@ data-science-2026/
 | **Pertemuan 10** | Algoritma Klasifikasi (Bagian 2): Random Forest & Imbalanced Dataset | [📓 Buka Notebook](./Pertemuan10_JuniorDanyWibisono_250401020098.ipynb) |
 | **Pertemuan 11** | Unsupervised Learning: Clustering (K-Means & Hierarchical) | [📓 Buka Notebook](./Pertemuan11_JuniorDanyWibisono_250401020098.ipynb) |
 | **Pertemuan 12** | Asosiasi Data & Sistem Rekomendasi Dasar (Apriori & Content-Based Filtering) | [📓 Buka Notebook](./Pertemuan12_JuniorDanyWibisono_250401020098.ipynb) |
+| **Pertemuan 13** | Pengantar Topik Lanjutan: Deep Learning & NLP Dasar (Neural Network Keras & TF-IDF) | [📓 Buka Notebook](./Pertemuan13_JuniorDanyWibisono_250401020098.ipynb) |
 
 ### Detail Setiap Pertemuan
 
@@ -156,6 +158,14 @@ data-science-2026/
   - **Evaluasi Top-K**: **Precision@K** (proporsi item relevan di antara K rekomendasi teratas) & **Recall@K**; nilai wajar **menurun** seiring K membesar
   - Hands-on: **Market Basket Analysis + rekomender produk** (50 transaksi sintetis, 10 produk, pola `Roti → Selai` **sengaja ditanam**). Apriori **berhasil menemukan kembali** pola tersembunyi lewat aturan ber-**Lift > 1**; dibangun pula rekomender **Content-Based** (cosine similarity atas kategori), lalu **dibandingkan** dengan rekomendasi association rules — menunjukkan kedua pendekatan menjawab pertanyaan berbeda (*"dibeli bersama?"* vs *"mirip?"*) dan saling melengkapi dalam sistem Hybrid
 
+- [x] **Pertemuan 13** — Pengantar Topik Lanjutan: Deep Learning & NLP Dasar
+  - **ML Klasik vs Deep Learning**: pembeda mendasar ada di *feature engineering* — manual oleh manusia (klasik) vs **dipelajari otomatis dari data mentah** (Deep Learning); lanskap arsitektur modern: **CNN** (gambar), **RNN** (sekuensial), **Transformer** (dasar ChatGPT/BERT, mekanisme *attention*), **GAN** (generatif)
+  - **Artificial Neural Network (ANN)**: konsep neuron `Output = Aktivasi(Σ input × weight + bias)`, susunan **input → hidden → output layer**, dan peran krusial **activation function** (**ReLU**, **Sigmoid**, **Softmax**) — tanpa non-linearitas, network bertingkat pun setara satu regresi linear
+  - **Proses training**: **Forward Pass** → **Hitung Error** → **Backpropagation** (error dialirkan mundur untuk menemukan kontribusi tiap weight) → **Update Weight**, diulang per **epoch**; membaca **kurva akurasi training vs validasi** (saling mendekat = sehat, menjauh = overfitting) & dampak jumlah hidden layer (underfitting ↔ overfitting)
+  - **Implementasi Keras/TensorFlow**: empat langkah `Sequential → compile → fit → predict`, plus `summary()` & `evaluate()`
+  - **NLP dasar — text vectorization**: **Bag-of-Words** (hitung frekuensi kata) vs **TF-IDF = TF × IDF** (kata umum diberi bobot rendah, kata khas diberi bobot tinggi); tangga kompleksitas **BoW → TF-IDF → Word Embeddings → Transformer/LLM** & prinsip *start simple* (TF-IDF sebagai baseline)
+  - Hands-on (2 bagian): **(1)** neural network `Dense(16, ReLU) → Dense(8, ReLU) → Dense(1, Sigmoid)` pada dataset non-linear **`make_moons`** (300 titik, 2 kelas bulan sabit) — **akurasi uji ≈ 0.90**, kurva training-validasi sehat, dan **decision boundary melengkung** mengikuti bentuk sabit (bukti visual kekuatan non-linearitas); **(2)** **analisis sentimen 40 ulasan produk** berbahasa Indonesia via **`TfidfVectorizer` + Logistic Regression** — akurasi uji **1.000** (data kecil & sintetis, dibaca sebagai bukti konsep), koefisien model **interpretable** (*bagus, puas, cepat* vs *jelek, rusak, kecewa*), dan kalimat baru terklasifikasi sesuai intuisi
+
 ---
 
 ## 🛠️ Tools yang Digunakan
@@ -166,7 +176,8 @@ data-science-2026/
 - **Matplotlib** — visualisasi data dasar & dashboard statis
 - **Seaborn** — visualisasi data statistik (histplot, boxplot, violin, pairplot)
 - **SciPy** — uji statistik (Pearson, Spearman, skewness test) & **hierarchical clustering** (`scipy.cluster.hierarchy`: `linkage`, `dendrogram`, `fcluster`)
-- **scikit-learn** — preprocessing (encoder, scaler), `train_test_split`, model `LinearRegression`, `LogisticRegression`, `DecisionTreeClassifier`, `RandomForestClassifier`, **clustering `KMeans`**, **`cosine_similarity`** (kemiripan item untuk Content-Based Filtering), & metrik evaluasi lengkap (regresi & klasifikasi, termasuk `classification_report`, `roc_auc_score`, `precision_recall_curve`, & **`silhouette_score`** untuk clustering)
+- **scikit-learn** — preprocessing (encoder, scaler), `train_test_split`, model `LinearRegression`, `LogisticRegression`, `DecisionTreeClassifier`, `RandomForestClassifier`, **clustering `KMeans`**, **`cosine_similarity`** (kemiripan item untuk Content-Based Filtering), **`TfidfVectorizer`** (text vectorization untuk NLP), dataset sintetis (`make_moons`), & metrik evaluasi lengkap (regresi & klasifikasi, termasuk `classification_report`, `roc_auc_score`, `precision_recall_curve`, & **`silhouette_score`** untuk clustering)
+- **TensorFlow / Keras** — framework **Deep Learning**: membangun & melatih **Artificial Neural Network** (`Sequential`, `Dense`, activation ReLU/Sigmoid, optimizer Adam, loss binary crossentropy)
 - **imbalanced-learn (imblearn)** — penanganan data tak seimbang: **SMOTE** (Synthetic Minority Over-sampling)
 - **mlxtend (machine learning extensions)** — **Association Rule Mining**: `TransactionEncoder` (one-hot transaksi), `apriori` (frequent itemset), & `association_rules` (aturan asosiasi + Support, Confidence, Lift)
 - **Requests** — akses REST API
@@ -184,7 +195,7 @@ data-science-2026/
 
 ---
 
-## 📌 Kesimpulan Umum Perjalanan Belajar Data Science (Pertemuan 1–12)
+## 📌 Kesimpulan Umum Perjalanan Belajar Data Science (Pertemuan 1–13)
 
 Tujuh pertemuan ini membentuk fondasi yang solid untuk berkarir sebagai Data Scientist. Perjalanan dimulai dari memahami **ekosistem Python** (Pertemuan 1–2), berlanjut ke keterampilan inti berupa **pembersihan data** dan **analisis statistik** (Pertemuan 3–4), kemudian **komunikasi data melalui visualisasi** (Pertemuan 5), hingga akhirnya membangun **pipeline Machine Learning pertama** secara end-to-end (Pertemuan 6–7).
 
@@ -198,7 +209,9 @@ Sebagian dari rencana belajar tersebut kini telah terwujud di **Pertemuan 9 & 10
 
 **Pertemuan 12** memperluas *unsupervised learning* ke dua arah baru yang berorientasi **pola** dan **kemiripan**: **Association Rule Mining** dan **Sistem Rekomendasi**. Lewat **Market Basket Analysis**, saya belajar bahwa algoritma **Apriori** dapat menemukan pola *"jika A maka B"* dari data transaksi tanpa label — dan bahwa metrik yang paling menentukan bukan Support atau Confidence, melainkan **Lift**, yang membedakan hubungan **nyata** dari sekadar **kebetulan statistik**. Pelajaran yang berkesan: sebuah aturan bisa punya Confidence tinggi hanya karena item consequent-nya populer, sehingga **Lift > 1** wajib diperiksa sebelum aturan dianggap layak. Pada sisi rekomendasi, saya memahami perbedaan mendasar antara **Collaborative Filtering** (belajar dari *pola perilaku pengguna*, unggul untuk serendipity tetapi rapuh pada *cold start*) dan **Content-Based Filtering** (belajar dari *atribut item*, kebal cold start tetapi rekomendasinya kurang beragam) — serta bahwa sistem produksi nyata menggabungkan keduanya menjadi **Hybrid**. Di praktikum, Apriori berhasil menemukan kembali pola `Roti → Selai` yang sengaja saya tanam, dan membandingkan rekomendasi association rules dengan Content-Based menegaskan bahwa keduanya menjawab pertanyaan berbeda — *"apa yang dibeli bersama?"* versus *"apa yang mirip?"*.
 
-Langkah selanjutnya yang ingin saya pelajari: **cross-validation & hyperparameter tuning** (GridSearchCV/RandomizedSearchCV) untuk estimasi performa yang lebih stabil, metode *boosting* lanjutan (**Gradient Boosting, XGBoost**), algoritma klasifikasi lain seperti **SVM** dan **Naive Bayes**, pendalaman *unsupervised learning* — **DBSCAN**, **Gaussian Mixture Model (GMM)**, dan reduksi dimensi dengan **PCA** — serta pendalaman **sistem rekomendasi**: **Collaborative Filtering** pada *user-item matrix* nyata, **Matrix Factorization (SVD)**, evaluasi **Precision@K / Recall@K**, dan **FP-Growth** sebagai alternatif Apriori yang lebih cepat.
+**Pertemuan 13** menjadi jembatan menuju dua pilar AI modern: **Deep Learning** dan **Natural Language Processing**. Untuk pertama kalinya saya membangun **Artificial Neural Network** dengan **Keras/TensorFlow**, dan langsung memahami mengapa pendekatan ini istimewa: berbeda dari seluruh algoritma Pertemuan 7–12 yang bergantung pada *feature engineering* manual, neural network **mempelajari fiturnya sendiri** dari data mentah. Eksperimen pada dataset `make_moons` memberi bukti visual yang paling berkesan — berkat activation function **ReLU**, *decision boundary* model **melengkung mengikuti bentuk bulan sabit** (akurasi uji ≈ 0.90), sesuatu yang mustahil bagi model linear, karena tanpa aktivasi network bertingkat pun setara satu regresi linear. Saya juga belajar bahwa proses training bukan magis melainkan siklus sistematis **forward pass → hitung error → backpropagation → update weight** per **epoch**, dengan kurva training-vs-validasi sebagai "EKG" untuk mendeteksi overfitting. Di sisi NLP, teknik **TF-IDF** mengajarkan ide sederhana yang kuat: teks diubah menjadi angka dengan kata umum dihukum (bobot rendah) dan kata khas diberi bobot tinggi — digabung **Logistic Regression**, terbentuk baseline analisis sentimen yang **cepat, murah, dan interpretable** (koefisiennya langsung memperlihatkan *bagus, puas, cepat* vs *jelek, rusak, kecewa*). Pelajaran praktisnya: *start simple* — validasi ide dengan TF-IDF dahulu, baru naik ke **Transformer/LLM** (BERT, GPT) bila akurasi belum memadai dan data serta komputasi tersedia.
+
+Langkah selanjutnya yang ingin saya pelajari: **cross-validation & hyperparameter tuning** (GridSearchCV/RandomizedSearchCV) untuk estimasi performa yang lebih stabil, metode *boosting* lanjutan (**Gradient Boosting, XGBoost**), algoritma klasifikasi lain seperti **SVM** dan **Naive Bayes**, pendalaman *unsupervised learning* — **DBSCAN**, **Gaussian Mixture Model (GMM)**, dan reduksi dimensi dengan **PCA** — pendalaman **sistem rekomendasi** (**Collaborative Filtering** pada *user-item matrix* nyata, **Matrix Factorization (SVD)**, **FP-Growth**), serta kelanjutan alami dari Pertemuan 13: arsitektur **CNN** untuk gambar, **RNN/LSTM** untuk data sekuensial, mekanisme *attention* pada **Transformer**, teknik **EarlyStopping** & regularisasi (Dropout), dan preprocessing teks bahasa Indonesia (*stopword removal*, *stemming* dengan **Sastrawi**, n-gram) untuk analisis sentimen pada data ulasan nyata.
 
 ---
 
