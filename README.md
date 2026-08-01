@@ -56,6 +56,8 @@ data-science-2026/
 └── Pertemuan14_JuniorDanyWibisono_250401020098.ipynb   # Notebook Pertemuan 14
 ```
 
+> **Catatan:** Pertemuan 8 adalah pekan **Ujian Tengah Semester (UTS)** sehingga tidak memiliki notebook aktivitas hands-on. Penomoran yang melompat dari Pertemuan 7 ke Pertemuan 9 karena itu memang disengaja, bukan berkas yang tertinggal.
+
 ---
 
 ## 📝 Daftar Pertemuan
@@ -75,6 +77,22 @@ data-science-2026/
 | **Pertemuan 12** | Asosiasi Data & Sistem Rekomendasi Dasar (Apriori & Content-Based Filtering) | [📓 Buka Notebook](./Pertemuan12_JuniorDanyWibisono_250401020098.ipynb) |
 | **Pertemuan 13** | Pengantar Topik Lanjutan: Deep Learning & NLP Dasar (Neural Network Keras & TF-IDF) | [📓 Buka Notebook](./Pertemuan13_JuniorDanyWibisono_250401020098.ipynb) |
 | **Pertemuan 14** | Tata Kelola Data, Etika AI, dan Privasi (Fairness Metrics, Mitigasi Bias & Anonimisasi) | [📓 Buka Notebook](./Pertemuan14_JuniorDanyWibisono_250401020098.ipynb) |
+
+### ✅ Status Kelengkapan Tugas (Pertemuan 9–13)
+
+| Persyaratan | 9 | 10 | 11 | 12 | 13 |
+|---|:--:|:--:|:--:|:--:|:--:|
+| Identitas (Nama, NIM, Kelas) di sel pertama | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Seluruh sel kode berjalan tanpa error | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Seluruh output sel terlihat (termasuk grafik) | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Kesimpulan & refleksi di sel terakhir | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Confusion Matrix (heatmap) | ✅ | ✅ | — | — | — |
+| Accuracy, Precision, Recall, F1-Score | ✅ | ✅ | — | — | — |
+| Interpretasi metrik yang paling relevan | ✅ | ✅ | — | — | — |
+
+**Interpretasi metrik pada dua notebook klasifikasi.** Pada **Pertemuan 9** (diagnosis kanker payudara) metrik paling kritis adalah **Recall pada kelas *malignant***, karena kesalahan yang paling berbahaya adalah **False Negative** — kasus ganas yang lolos dianggap jinak. Pada **Pertemuan 10** (customer churn, ~26,5% kelas positif) **Accuracy justru menyesatkan**: model yang selalu menebak "tidak churn" tetap terlihat ~73,5% akurat padahal Recall-nya 0%. Karena itu evaluasi difokuskan pada **Recall, F1-Score, dan PR-AUC** untuk kelas churn, bukan pada Accuracy.
+
+---
 
 ### Detail Setiap Pertemuan
 
@@ -210,11 +228,11 @@ data-science-2026/
 
 ## 📌 Kesimpulan Umum Perjalanan Belajar Data Science (Pertemuan 1–14)
 
-Tujuh pertemuan ini membentuk fondasi yang solid untuk berkarir sebagai Data Scientist. Perjalanan dimulai dari memahami **ekosistem Python** (Pertemuan 1–2), berlanjut ke keterampilan inti berupa **pembersihan data** dan **analisis statistik** (Pertemuan 3–4), kemudian **komunikasi data melalui visualisasi** (Pertemuan 5), hingga akhirnya membangun **pipeline Machine Learning pertama** secara end-to-end (Pertemuan 6–7).
+Tiga belas notebook dalam repositori ini merekam satu perjalanan utuh: dari baris kode Python pertama sampai pertanyaan etis tentang layak atau tidaknya sebuah model dipakai. **Paruh pertama (Pertemuan 1–7)** membangun fondasinya — memahami **ekosistem Python** (Pertemuan 1–2), menguasai keterampilan inti berupa **pembersihan data** dan **analisis statistik** (Pertemuan 3–4), belajar **mengomunikasikan data lewat visualisasi** (Pertemuan 5), lalu menyusun **pipeline Machine Learning pertama** secara end-to-end (Pertemuan 6–7). **Paruh kedua (Pertemuan 9–14)** menaikkan taraf: dari klasifikasi dan metode ensemble, ke *unsupervised learning*, sistem rekomendasi, deep learning dan NLP, hingga ditutup dengan tata kelola dan etika AI.
 
 Temuan terpenting dari rangkaian ini adalah bahwa **kualitas data jauh lebih menentukan daripada kecanggihan algoritma** — prinsip *Garbage In, Garbage Out* yang terbukti di setiap tahap. Saya juga memahami bahwa alur kerja yang benar (split → fit di train → transform di test) sangat kritis untuk mencegah *data leakage* yang membuat evaluasi model menjadi tidak valid.
 
-Sebagian dari rencana belajar tersebut kini telah terwujud di **Pertemuan 9 & 10**: saya mulai mempelajari **algoritma klasifikasi** dengan **Logistic Regression** dan **Decision Tree** (Pertemuan 9, dataset medis **Breast Cancer Wisconsin**), lalu meningkat ke metode **ensemble** dengan **Random Forest** (Pertemuan 10, kasus **Customer Churn**). Pelajaran kunci yang berulang di kedua pertemuan adalah bahwa **pemilihan metrik harus mengikuti konteks masalah** — untuk diagnosis kanker maupun deteksi churn, **Recall** (jangan sampai melewatkan kasus penting) jauh lebih kritis daripada Accuracy semata.
+**Pertemuan 9 & 10** menjadi titik masuk ke wilayah baru: saya mulai mempelajari **algoritma klasifikasi** dengan **Logistic Regression** dan **Decision Tree** (Pertemuan 9, dataset medis **Breast Cancer Wisconsin**), lalu meningkat ke metode **ensemble** dengan **Random Forest** (Pertemuan 10, kasus **Customer Churn**). Pelajaran kunci yang berulang di kedua pertemuan adalah bahwa **pemilihan metrik harus mengikuti konteks masalah** — untuk diagnosis kanker maupun deteksi churn, **Recall** (jangan sampai melewatkan kasus penting) jauh lebih kritis daripada Accuracy semata.
 
 **Pertemuan 10** secara khusus membuka mata saya pada **accuracy paradox**: pada data tak seimbang (~26,5% churn), sebuah model "malas" bisa terlihat 73,5% akurat padahal gagal total menangkap satu pun churner (Recall 0%). Saya belajar bahwa Random Forest — kombinasi *bagging* pohon dan keacakan fitur — menghasilkan prediksi yang jauh lebih stabil daripada satu pohon tunggal, dan bahwa *class imbalance* dapat ditangani lewat beberapa jalur yang saling melengkapi: **`class_weight`**, **SMOTE** (hanya pada data latih), dan **threshold tuning**. Yang paling berkesan, keluaran **`predict_proba`** mengubah model dari sekadar penebak label menjadi **alat prioritas bisnis** yang membantu tim retensi menargetkan pelanggan paling berisiko.
 
@@ -230,6 +248,15 @@ Langkah selanjutnya yang ingin saya pelajari: **cross-validation & hyperparamete
 
 ---
 
+## 🔁 Catatan Reproduksibilitas
+
+- Seluruh output sel — termasuk tabel, metrik, dan grafik — tersimpan di dalam berkas `.ipynb`, sehingga hasil dapat diperiksa langsung dari GitHub tanpa perlu menjalankan ulang notebook.
+- Setiap sumber keacakan dikunci dengan **seed tetap** (`random_state=42`, `np.random.seed(42)`, `tf.random.set_seed(42)`) agar hasil dapat direproduksi.
+- Pada **Pertemuan 12**, daftar item transaksi dikonversi ke tipe `str` bawaan Python sebelum masuk ke `apriori()`. Tanpa konversi ini, `association_rules()` pada **mlxtend versi terbaru** akan gagal karena mencoba mengubah nama produk bertipe `numpy.str_` menjadi bilangan bulat. Konversi tersebut tidak mengubah hasil apa pun — hanya membuat notebook tetap berjalan lintas versi pustaka.
+- Beberapa notebook menampilkan `FutureWarning` dari Seaborn (parameter `palette` tanpa `hue`). Peringatan ini **tidak menghentikan eksekusi** dan sengaja dibiarkan apa adanya sebagai catatan versi pustaka saat notebook dijalankan.
+
+---
+
 ## 📬 Kontak
 
 - **GitHub:** [@juniordw](https://github.com/juniordw)
@@ -237,4 +264,4 @@ Langkah selanjutnya yang ingin saya pelajari: **cross-validation & hyperparamete
 
 ---
 
-_Repositori ini dibuat sebagai bagian dari aktivitas belajar Data Science, Program Studi PJJ Informatika, Kelas IF401, Universitas UNSIA — Semester Genap 2025/2026._
+_Repositori ini dibuat sebagai bagian dari aktivitas belajar Data Science, Program Studi PJJ Informatika, Kelas IF401, Universitas Siber Asia (UNSIA) — Semester Genap 2025/2026._
